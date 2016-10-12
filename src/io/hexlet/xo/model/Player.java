@@ -4,18 +4,18 @@ public class Player {
 
     private final String name;
 
-    private final String figure;
+    private final Figure figure;
 
-    public Player(PlayerBuilder builder) {
-        this.name = builder.getName();
-        this.figure = builder.getFigure();
+    public Player(String name, Figure figure){
+        this.name = name;
+        this.figure = figure;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getFigure() {
+    public Figure getFigure() {
         return figure;
     }
 

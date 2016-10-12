@@ -1,5 +1,9 @@
 import io.hexlet.xo.model.Field;
 import io.hexlet.xo.model.Point;
+import io.hexlet.xo.model.Player;
+import io.hexlet.xo.model.Figure;
+import io.hexlet.xo.model.Game;
+import io.hexlet.xo.model.GameBuilder;
 import io.hexlet.xo.model.exceptions.*;
 import io.hexlet.xo.view.*;
 import io.hexlet.xo.controllers.*;
@@ -16,24 +20,20 @@ public class Main {
         final Field field = new Field();
         final CurrentMoveController cmc = new CurrentMoveController();
 
-        final Point p = new Point();
-        p.x = 1;
-        p.y = 1;
 
-        if (!cmc.currentMove(field).equals("X")){
+        if (!cmc.currentMove(field).equals(Figure.X)){
             throw new RuntimeException("do not returns X when the field is empty");
         }
 
         for (int i = 0; i < field.getSize(); i++)
             for (int i2 = 0; i2 < field.getSize(); i2++) {
                 if (i * i2 == 4) break;
-                p.x = i;
-                p.y = i2;
-                final String figure = (i * 3 + i2) % 2 == 0 ? "X" : "O";
+                final Point p = new Point(i, i2);
+                final Figure figure = (i * 3 + i2) % 2 == 0 ? Figure.X : Figure.O;
                 field.setFigure(p, figure);
-                System.out.printf("putting figure: %s to the: X:%d Y:%d\n", figure, p.x, p.y);
+                System.out.printf("putting figure: %s to the: X:%d Y:%d\n", figure, p.getX(), p.getY());
                 if (cmc.currentMove(field).equals(figure)){
-                    throw new RuntimeException(String.format("returns %s for the field: %s", figure, Arrays.deepToString(field.figures)));
+                    throw new RuntimeException(String.format("returns %s for the field", figure));
                 }
 
             }
@@ -46,29 +46,40 @@ public class Main {
 
         testPrivateMethod("countFiguresInTheRow", CurrentMoveController.class, Field.class, Integer.class);
         testPublicMethod("currentMove", CurrentMoveController.class, Field.class);
-        testPublicMethod("applyFigure", MoveController.class, Field.class, Point.class, String.class);
+        testPublicMethod("applyFigure", MoveController.class, Field.class, Point.class, Figure.class);
         testPublicMethod("getWinner", WinnerController.class, Field.class);
         testPrivateMethod("checkDiag1", WinnerController.class, Field.class);
         testPrivateMethod("checkDiag2", WinnerController.class, Field.class);
         testPrivateMethod("checkColumn", WinnerController.class, Field.class, Integer.class);
         testPrivateMethod("checkRow", WinnerController.class, Field.class, Integer.class);
+
+        final Player p = new Player("Slava", Figure.X);
+        if (!p.getName().equals("Slava")) throw new RuntimeException(String.format("Player.getName returns %s instead of %s", p.getName(), "Slava"));
+        if (!p.getFigure().equals(Figure.X)) throw new RuntimeException(String.format("Player.getFigure returns %s instead of %s", p.getFigure(), Figure.X));
+        final Player p2 = new Player("Gleb", Figure.O);
+        final Game g = new GameBuilder().player1(p).player2(p2).field(field).name("XO").build();
+        if (!g.getPlayer1().equals(p)) throw new RuntimeException(String.format("Game.getPlayer1 returns %s instead of %s", g.getPlayer1(), p));
+        if (!g.getPlayer2().equals(p2)) throw new RuntimeException(String.format("Game.getPlayer2 returns %s instead of %s", g.getPlayer2(), p2));
     }
 
-    private static void checkField(String winner, String... field) {
+    private static void checkField(String winnerStr, String... field) {
+        final Figure winner = winnerStr != null ? Figure.valueOf(winnerStr) : null;
         final Field f = new Field();
         for (int i = 0; i < field.length; i++) {
-            final Point p = new Point();
-            p.x = i % 3;
 
-            p.y = (i - i % 3) / 3;
-            f.setFigure(p, field[i]);
+            final int x = i % 3;
+
+            final int y = (i - i % 3) / 3;
+            final Point p = new Point(x, y);
+            final Figure figure = field[i] != null ? Figure.valueOf(field[i]) : null;
+            f.setFigure(p, figure);
 
         }
         final WinnerController wc = new WinnerController();
         if (winner == null && wc.getWinner(f) != null)
-            throw new RuntimeException(String.format("Incorrectly show winner for the field: %s, it shows: %s", Arrays.deepToString(f.figures), wc.getWinner(f)));
+            throw new RuntimeException(String.format("Incorrectly show winner, it shows: %s", wc.getWinner(f)));
         if (winner != null && !winner.equals(wc.getWinner(f)))
-            throw new RuntimeException(String.format("Incorrectly show winner for the field: %s, it shows: %s", Arrays.deepToString(f.figures), wc.getWinner(f)));
+            throw new RuntimeException(String.format("Incorrectly show winner, it shows: %s", wc.getWinner(f)));
 
     }
 

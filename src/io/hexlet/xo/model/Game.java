@@ -10,7 +10,7 @@ public class Game {
 
     private final String name;
 
-    public Game(GameBuilder builder) {
+    Game(final GameBuilder builder) {
         this.player1 = builder.getPlayer1();
         this.player2 = builder.getPlayer2();
         this.field = builder.getField();
