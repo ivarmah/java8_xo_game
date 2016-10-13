@@ -9,11 +9,12 @@ import io.hexlet.xo.model.exceptions.InvalidPointException;
 
 public class MoveController {
 
-    public void applyFigure(final Field field,
-                            final Point point,
-                            final Figure figure)
-    {
+    public boolean applyFigure(final Field field,
+                               final Point point,
+                               final Figure figure) {
+        if (field.getFigure(point) != null) return false;
         field.setFigure(point, figure);
+        return true;
     }
 
 }

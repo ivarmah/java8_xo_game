@@ -21,7 +21,9 @@ public class ConsoleView implements ICoordinateGetter {
         System.out.println(fieldBuilder.toString());
     }
 
-    void generateLine(final Field field, final int x,   final StringBuilder sb) {
+    void generateLine(final Field field,
+                      final int x,
+                      final StringBuilder sb) {
         for (int y = 0; y < field.getSize(); y++) {
             if (y != 0)
                 sb.append("|");

@@ -2,23 +2,29 @@ package io.hexlet.xo.view;
 
 import io.hexlet.xo.model.Field;
 import io.hexlet.xo.model.Point;
-
 import java.util.Random;
 
 public class RandomCoordinateGetter implements ICoordinateGetter {
 
-    @Override
-    public Point getMoveCoordinate(Field field) {
-        int x = 0;
-        int y = 0;
-        Point p = new Point(0, 0);
-        Random rn = new Random();
+    private static final Random RANDOM = new Random();
 
-        while (field.getFigure(p) != null) {
-            p = new Point(rn.nextInt(3), rn.nextInt(3));
+    public Point getMoveCoordinate(final Field field) {
+        Point result = getRandomPoint();
+        while (field.getFigure(result) != null) {
+            result = getRandomPoint();
         }
+        return result;
+    }
 
-        return p;
+    private Point getRandomPoint() {
+        return new Point(
+                getRandomInt(),
+                getRandomInt()
+        );
+    }
+
+    private int getRandomInt() {
+        return Math.abs(RANDOM.nextInt() % 3);
     }
 
 }
