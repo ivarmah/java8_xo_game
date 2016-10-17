@@ -1,19 +1,51 @@
 package io.hexlet.xo.model;
 
+
+import io.hexlet.xo.model.exceptions.InvalidPointException;
+
+
 public class Field {
 
-    private final Figure[][] figures = new Figure[3][3];
+    private static final int MIN_COORDINATE = 0;
+
+    private final Figure[][] field;
+
+    private final int filedSize;
+
+    public Field(final int filedSize) {
+        this.filedSize = filedSize;
+        field = new Figure[filedSize][filedSize];
+    }
 
     public int getSize() {
-        return figures.length;
+        return filedSize;
     }
 
-    public Figure getFigure(final Point point) {
-        return figures[point.getX()][point.getY()];
+    public Figure getFigure(final Point point) throws InvalidPointException{
+        try{
+            if(point.getX() < 0 || point.getY() < 0){
+                throw new InvalidPointException();
+            }
+            else{
+                return field[point.getX()][point.getY()];
+            }
+        } catch(InvalidPointException e){
+            throw e;
+        }
     }
 
-    public void setFigure(final Point point, final Figure figure) {
-        figures[point.getX()][point.getY()] = figure;
+    public void setFigure(final Point point, final Figure figure) throws InvalidPointException{
+        try{
+            if(point.getX() < 0 || point.getY() < 0){
+                throw new InvalidPointException();
+            }
+            else{
+                field[point.getX()][point.getY()] = figure;
+            }
+        }
+        catch(InvalidPointException e){
+            throw e;
+        }
     }
 
 }

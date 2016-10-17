@@ -29,11 +29,15 @@ public class WinnerController {
         final Point p2 = new Point(1, 1);
         final Point p3 = new Point(2, 2);
 
-        if (field.getFigure(p1) != null && field.getFigure(p2) != null &&
-                field.getFigure(p3) != null &&
-                field.getFigure(p1).equals(field.getFigure(p2)) &&
-                field.getFigure(p1).equals(field.getFigure(p3))) {
-            return field.getFigure(p1);
+        try {
+            if (field.getFigure(p1) != null && field.getFigure(p2) != null &&
+                    field.getFigure(p3) != null &&
+                    field.getFigure(p1).equals(field.getFigure(p2)) &&
+                    field.getFigure(p1).equals(field.getFigure(p3))) {
+                return field.getFigure(p1);
+            }
+        } catch (final InvalidPointException e) {
+            return null;
         }
         return null;
     }
@@ -44,11 +48,15 @@ public class WinnerController {
         final Point p2 = new Point(1, 1);
         final Point p3 = new Point(0, 2);
 
-        if (field.getFigure(p1) != null && field.getFigure(p2) != null
-                && field.getFigure(p3) != null &&
-                field.getFigure(p1).equals(field.getFigure(p2)) &&
-                field.getFigure(p1).equals(field.getFigure(p3))) {
-            return field.getFigure(p1);
+        try {
+            if (field.getFigure(p1) != null && field.getFigure(p2) != null
+                    && field.getFigure(p3) != null &&
+                    field.getFigure(p1).equals(field.getFigure(p2)) &&
+                    field.getFigure(p1).equals(field.getFigure(p3))) {
+                return field.getFigure(p1);
+            }
+        } catch (final InvalidPointException e) {
+            return null;
         }
         return null;
     }
@@ -58,11 +66,15 @@ public class WinnerController {
         final Point p2 = new Point(1, i);
         final Point p3 = new Point(2, i);
 
-        if (field.getFigure(p1) != null && field.getFigure(p2) != null
-                && field.getFigure(p3) != null &&
-                field.getFigure(p1).equals(field.getFigure(p2)) &&
-                field.getFigure(p1).equals(field.getFigure(p3))) {
-            return field.getFigure(p1);
+        try {
+            if (field.getFigure(p1) != null && field.getFigure(p2) != null
+                    && field.getFigure(p3) != null &&
+                    field.getFigure(p1).equals(field.getFigure(p2)) &&
+                    field.getFigure(p1).equals(field.getFigure(p3))) {
+                return field.getFigure(p1);
+            }
+        } catch (final InvalidPointException e) {
+            return null;
         }
         return null;
     }
@@ -72,11 +84,15 @@ public class WinnerController {
         final Point p2 = new Point(i, 1);
         final Point p3 = new Point(i, 2);
 
-        if (field.getFigure(p1) != null && field.getFigure(p2) != null
-                && field.getFigure(p3) != null &&
-                field.getFigure(p1).equals(field.getFigure(p2)) &&
-                field.getFigure(p1).equals(field.getFigure(p3))) {
-            return field.getFigure(p1);
+        try {
+            if (field.getFigure(p1) != null && field.getFigure(p2) != null
+                    && field.getFigure(p3) != null &&
+                    field.getFigure(p1).equals(field.getFigure(p2)) &&
+                    field.getFigure(p1).equals(field.getFigure(p3))) {
+                return field.getFigure(p1);
+            }
+        } catch (final InvalidPointException e) {
+            return null;
         }
         return null;
     }

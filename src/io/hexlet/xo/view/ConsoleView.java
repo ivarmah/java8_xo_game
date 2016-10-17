@@ -4,6 +4,7 @@ package io.hexlet.xo.view;
 import io.hexlet.xo.model.Field;
 import io.hexlet.xo.model.Figure;
 import io.hexlet.xo.model.Point;
+import io.hexlet.xo.model.exceptions.InvalidPointException;
 
 public class ConsoleView implements ICoordinateGetter {
 
@@ -24,16 +25,18 @@ public class ConsoleView implements ICoordinateGetter {
     void generateLine(final Field field,
                       final int x,
                       final StringBuilder sb) {
-        for (int y = 0; y < field.getSize(); y++) {
-            if (y != 0)
-                sb.append("|");
-            sb.append(" ");
-            final Figure figure;
-            figure = field.getFigure(new Point(y, x));
-            sb.append(figure != null ? figure : " ");
-            sb.append(" ");
-        }
-        sb.append("\n");
+        try {
+            for (int y = 0; y < field.getSize(); y++) {
+                if (y != 0)
+                    sb.append("|");
+                sb.append(" ");
+                final Figure figure;
+                figure = field.getFigure(new Point(y, x));
+                sb.append(figure != null ? figure : " ");
+                sb.append(" ");
+            }
+            sb.append("\n");
+        } catch (final InvalidPointException e) {}
     }
 
     void generateSeparator(final StringBuilder sb) {
