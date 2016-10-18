@@ -6,8 +6,8 @@ In each commit I add new language principles (enums, OOP, patterns, visibility l
 Doing it as if learning language from the scratch.
 
 Many thanks to:
-[1]: http://www.kovalevskyi.com for inspiration.
-[2]: www.hexlet.org for setting up a nice software development playground.
+* [1]: http://www.kovalevskyi.com for inspiration.
+* [2]: www.hexlet.org for setting up a nice software development playground.
 
 
 
