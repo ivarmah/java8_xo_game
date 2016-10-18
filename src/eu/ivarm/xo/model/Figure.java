@@ -1,4 +1,4 @@
-package io.hexlet.xo.model;
+package eu.ivarm.xo.model;
 
 public enum Figure {
     X, O

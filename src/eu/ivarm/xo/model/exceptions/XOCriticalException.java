@@ -1,4 +1,4 @@
-package io.hexlet.xo.model.exceptions;
+package eu.ivarm.xo.model.exceptions;
 
 public class XOCriticalException extends RuntimeException {
 

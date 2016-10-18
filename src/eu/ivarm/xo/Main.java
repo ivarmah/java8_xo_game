@@ -1,15 +1,11 @@
-package io.hexlet.xo;
+package eu.ivarm.xo;
 
-import io.hexlet.xo.model.Field;
-import io.hexlet.xo.model.Point;
-import io.hexlet.xo.model.Player;
-import io.hexlet.xo.model.Game;
-import io.hexlet.xo.model.Figure;
-import io.hexlet.xo.model.exceptions.*;
-import io.hexlet.xo.view.*;
-import io.hexlet.xo.controllers.*;
-
-import java.util.Arrays;
+import eu.ivarm.xo.model.Field;
+import eu.ivarm.xo.model.Point;
+import eu.ivarm.xo.model.Player;
+import eu.ivarm.xo.model.Game;
+import eu.ivarm.xo.model.Figure;
+import eu.ivarm.xo.model.exceptions.InvalidPointException;
 
 
 public class Main {

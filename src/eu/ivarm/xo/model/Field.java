@@ -1,7 +1,7 @@
-package io.hexlet.xo.model;
+package eu.ivarm.xo.model;
 
 
-import io.hexlet.xo.model.exceptions.InvalidPointException;
+import eu.ivarm.xo.model.exceptions.InvalidPointException;
 
 
 public class Field {

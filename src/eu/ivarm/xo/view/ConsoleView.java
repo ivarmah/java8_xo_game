@@ -1,10 +1,10 @@
-package io.hexlet.xo.view;
+package eu.ivarm.xo.view;
 
 
-import io.hexlet.xo.model.Field;
-import io.hexlet.xo.model.Figure;
-import io.hexlet.xo.model.Point;
-import io.hexlet.xo.model.exceptions.InvalidPointException;
+import eu.ivarm.xo.model.Field;
+import eu.ivarm.xo.model.Figure;
+import eu.ivarm.xo.model.Point;
+import eu.ivarm.xo.model.exceptions.InvalidPointException;
 
 public class ConsoleView implements ICoordinateGetter {
 

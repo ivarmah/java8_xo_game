@@ -1,7 +1,7 @@
-package io.hexlet.xo.view;
+package eu.ivarm.xo.view;
 
-import io.hexlet.xo.model.Field;
-import io.hexlet.xo.model.Point;
+import eu.ivarm.xo.model.Field;
+import eu.ivarm.xo.model.Point;
 
 public interface ICoordinateGetter {
 
